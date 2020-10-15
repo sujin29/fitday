@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <style>
+    .highcharts-figure, .highcharts-data-table table {
+      min-width: 310px;
+      max-width: 800px;
+      margin: 1em auto;
+    }
+
+    #container {
+      height: 400px;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #EBEBEB;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .highcharts-data-table caption {
+      padding: 1em 0;
+      font-size: 1.2em;
+      color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+      padding: 0.5em;
+    }
+    .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+      padding: 0.5em;
+    }
+    .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+      background: #f1f7ff;
+    }
+    </style>
+
+</head>
+<body>
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+        <center>차트는 가독성과 이해도를 높일 수 있습니다
+        <b> writen by ^0^ </b>
+        </center>
+        </p>
+    </figure>
+
+</body>
+
+<script>
+        Highcharts.chart('container', {
+          chart: {
+            type: 'bar'
+          },
+          title: {
+            text: '🤸‍♀️운동장🤸‍♀️'
+          },
+          subtitle: {
+            text: '열정🔥🔥'
+          },
+          xAxis: {
+            categories: ['수진', '나영', '지희', '희정'],
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Population (millions)',
+              align: 'high'
+            },
+            labels: {
+              overflow: 'justify'
+            }
+          },
+          tooltip: {
+            valueSuffix: ' millions'
+          },
+          plotOptions: {
+            bar: {
+              dataLabels: {
+                enabled: true
+              }
+            }
+          },
+          legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor:
+              Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+            shadow: true
+          },
+          credits: {
+            enabled: false
+          },
+          series: [{
+            name: '10월',
+            data: {{a}}
+          }, {
+            name: '9월',
+            data: {{b}}
+          }, {
+            name: '8월',
+            data: {{c}}
+          }, {
+            name: '7월',
+            data: {{d}}
+          }]
+        });
+
+</script>
+</html>

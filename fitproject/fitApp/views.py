@@ -43,3 +43,13 @@ def deleteExercise(request):
     exercise = Exercise.objects.get(id=delete_exercise_id)
     exercise.delete()
     return HttpResponseRedirect(reverse('index'))
+
+def bar(request):
+    a = [107, 31, 635, 203]
+    b = [133, 156, 947, 408]
+    c = [814, 841, 714, 727]
+    d = [216, 1001, 436, 738]
+
+    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d}
+
+    return render(request, 'chart_bar.html', context)

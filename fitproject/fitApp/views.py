@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import *
+from django.db.models import Sum
 
 
 # Create your views here.
@@ -13,12 +14,6 @@ def index(request):
     content = {'exercises': exercises}
     return render(request, 'index.html', content)
 
-def createTodo(request):
-    user_input_str = request.POST['todoContent']
-    new_todo = Todo(content = user_input_str)
-    new_todo.save()
-    return HttpResponseRedirect(reverse('index'))
-    # return HttpResponse('입력한 시간 보여주기 =>'+user_input_str)
 
 def doneTodo(request):
     done_todo_id = request.GET['todoNum']
@@ -29,12 +24,13 @@ def doneTodo(request):
     return HttpResponseRedirect(reverse('index'))
 
 def createExercise(request):
+    nickname = request.POST['nickname']
     exer_date = request.POST['exerDate']
     exer_title = request.POST['exerTitle']
     exer_time = request.POST['exerTime']
-    new_exercise = Exercise(exer_date=exer_date, exer_title=exer_title, exer_time=exer_time)
+    new_exercise = Exercise(nickname=nickname, exer_date=exer_date, exer_title=exer_title, exer_time=exer_time)
     new_exercise.save()
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('bar'))
     # return HttpResponse('운동종류: '+exer_title+'운동시간: '+exer_time)
 
 def deleteExercise(request):
@@ -42,14 +38,20 @@ def deleteExercise(request):
     print('삭제할 exercise의 id', delete_exercise_id)
     exercise = Exercise.objects.get(id=delete_exercise_id)
     exercise.delete()
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('bar'))
 
 def bar(request):
-    a = [107, 31, 635, 203]
-    b = [133, 156, 947, 408]
-    c = [814, 841, 714, 727]
-    d = [216, 1001, 436, 738]
+    exercises = Exercise.objects.all()
+    sum_time = Exercise.objects.all().aggregate(Sum('exer_time'))
+    tt = sum_time['exer_time__sum']
+    print(tt)
 
-    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d}
+
+    a = [tt, 130] # 수진 = [10월, 9월, 8월, 7월]
+    b = [133, 156]
+    c = [814, 841]
+    d = [216, 1001]
+
+    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d, 'exercises': exercises}
 
     return render(request, 'chart_bar.html', context)

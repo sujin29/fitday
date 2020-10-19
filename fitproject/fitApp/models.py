@@ -11,8 +11,9 @@ class Todo(models.Model):
 
 class Exercise(models.Model):
     today = models.DateTimeField(default=timezone.now)
+    nickname = models.CharField(max_length=100, null=True)
     exer_title = models.CharField(max_length=100)
-    exer_time = models.CharField(max_length=100)
+    exer_time = models.IntegerField()
     exer_date = models.CharField(max_length=100, null=True)
 
 

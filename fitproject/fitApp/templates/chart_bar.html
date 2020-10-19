@@ -59,6 +59,66 @@
         </p>
     </figure>
 
+    <div class="exercise">
+        <div class="messageDiv">
+            <form action="./createExercise/" method="POST">{% csrf_token %}
+                <div class="input-group">
+                    <select id="nickname" name="nickname">
+                        <option value="">누구</option>
+                        <option value="hee">희정</option>
+                        <option value="na">나영</option>
+                        <option value="jihee">지희</option>
+                        <option value="sujin">수진</option>
+                    </select>
+                    <input id="exerDate" name="exerDate" type="date" class="form-control" placeholder="언제 했나요?">
+                    <input id="exerTitle" name="exerTitle" type="text" class="form-control" placeholder="무슨 운동을 했나요?">
+                    <input id="exerTime" name="exerTime" type="number" min="0" max="120" step="1" class="form-control" placeholder="몇 분?">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">저장!</button>
+                    </span>
+
+                </div>
+            </form>
+        </div>
+
+          <div class="exerDiv1">
+                <ul class="list-group">
+                    {% for exercise in exercises %}
+
+                    <form action="./deleteExercise/" method="GET">
+                        <div class="input-group" name='todo1'>
+                            <li class="list-group-item">{{ exercise.nickname }}{{ exercise.exer_date }}{{ exercise.exer_title }}{{ exercise.exer_time }}</li>
+                            <input type="hidden" id="exerNum" name="exerNum" value="{{ exercise.id }}"></input>
+                            <span class="input-group-addon">
+                                <button type="submit" class="custom-btn btn btn-danger">삭제</button>
+                            </span>
+                        </div>
+                    </form>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+  <div class="exerDiv">
+                <ul class="list-group">
+                    {% for exercise in exercises %}
+
+                    <form action="" method="GET">
+                        <div class="input-group" name='todo1'>
+                            <li class="list-group-item">{{ exercise.exer_date }}{{ exercise.exer_title }}{{ exercise.exer_time }}</li>
+                            <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
+                            <span class="input-group-addon">
+                                <button type="submit" class="custom-btn btn btn-danger">삭제</button>
+                            </span>
+                        </div>
+                    </form>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
 </body>
 
 <script>
@@ -73,7 +133,7 @@
             text: '열정🔥🔥'
           },
           xAxis: {
-            categories: ['수진', '나영', '지희', '희정'],
+            categories: ['10월', '9월', '8월', '7월'],
             title: {
               text: null
             }
@@ -81,7 +141,7 @@
           yAxis: {
             min: 0,
             title: {
-              text: 'Population (millions)',
+              text: '운동시간 (분)',
               align: 'high'
             },
             labels: {
@@ -114,16 +174,16 @@
             enabled: false
           },
           series: [{
-            name: '10월',
+            name: '수진',
             data: {{a}}
           }, {
-            name: '9월',
+            name: '나영',
             data: {{b}}
           }, {
-            name: '8월',
+            name: '지희',
             data: {{c}}
           }, {
-            name: '7월',
+            name: '희정',
             data: {{d}}
           }]
         });

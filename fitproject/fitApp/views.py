@@ -42,16 +42,41 @@ def deleteExercise(request):
 
 def bar(request):
     exercises = Exercise.objects.all()
-    sum_time = Exercise.objects.all().aggregate(Sum('exer_time'))
-    tt = sum_time['exer_time__sum']
-    print(tt)
+    # sum_time = Exercise.objects.filter(exer_date__month=9).aggregate(Sum('exer_time'))
+    # print(sum_time)
 
 
-    a = [tt, 130] # 수진 = [10월, 9월, 8월, 7월]
-    b = [133, 156]
-    c = [814, 841]
-    d = [216, 1001]
 
-    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d, 'exercises': exercises}
+    sujin_time10 = Exercise.objects.filter(nickname='sujin', exer_date__month=10).aggregate(Sum('exer_time'))
+    sujin10 = sujin_time10['exer_time__sum']
+    print(sujin_time10)
+
+    # sujin_time9 = Exercise.objects.filter(nickname='sujin', exer_date__month=9).aggregate(Sum('exer_time'))
+    # sujin9 = sujin_time9['exer_time__sum']
+    # print(sujin_time9)
+
+    nayoung_time10 = Exercise.objects.filter(nickname='nayoung', exer_date__month=10).aggregate(Sum('exer_time'))
+    nayoung10 = nayoung_time10['exer_time__sum']
+
+    jihee_time10 = Exercise.objects.filter(nickname='jihee', exer_date__month=10).aggregate(Sum('exer_time'))
+    jihee10 = jihee_time10['exer_time__sum']
+
+
+    heejung_time10 = Exercise.objects.filter(nickname='heejung', exer_date__month=10).aggregate(Sum('exer_time'))
+    heejung10 = heejung_time10['exer_time__sum']
+
+
+    jinhee_time10 = Exercise.objects.filter(nickname='jinhee', exer_date__month=10).aggregate(Sum('exer_time'))
+    jinhee10 = jinhee_time10['exer_time__sum']
+
+
+
+    a = [sujin10] # 수진 = [10월, 9월, 8월, 7월]
+    b = [10] # 나영
+    c = [jihee10] # 지희
+    d = [heejung10] # 희정
+    e = [10] # 진희
+
+    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d, 'e' : e,'exercises': exercises}
 
     return render(request, 'chart_bar.html', context)

@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>exercise</title>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <!-- Boot strap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <style>
     .highcharts-figure, .highcharts-data-table table {
@@ -46,6 +53,30 @@
     .highcharts-data-table tr:hover {
       background: #f1f7ff;
     }
+
+
+    .content{
+            height: 75%;
+        }
+        .messageDiv{
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .input-group{
+            width: 800px;
+            margin: 0 auto;
+
+        }
+        .exerDiv1{
+
+        }
+        .custom-btn{
+            font-size: 10px;
+        }
+        .panel-footer{
+            height:20%;
+            color:gray;
+        }
     </style>
 
 </head>
@@ -53,8 +84,8 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-        <center>차트는 가독성과 이해도를 높일 수 있습니다
-        <b> writen by ^0^ </b>
+        <center>여기는 개인전 🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀
+        <br> written by sujin </br>
         </center>
         </p>
     </figure>
@@ -65,14 +96,15 @@
                 <div class="input-group">
                     <select id="nickname" name="nickname">
                         <option value="">누구</option>
-                        <option value="hee">희정</option>
-                        <option value="na">나영</option>
-                        <option value="jihee">지희</option>
-                        <option value="sujin">수진</option>
+                        <option value="heejung">⭐희정⭐</option>
+                        <option value="nayoung">⭐나영⭐</option>
+                        <option value="jihee">⭐지희⭐</option>
+                        <option value="sujin">⭐수진⭐</option>
+                        <option value="jinhee">⭐진희⭐</option>
                     </select>
                     <input id="exerDate" name="exerDate" type="date" class="form-control" placeholder="언제 했나요?">
                     <input id="exerTitle" name="exerTitle" type="text" class="form-control" placeholder="무슨 운동을 했나요?">
-                    <input id="exerTime" name="exerTime" type="number" min="0" max="120" step="1" class="form-control" placeholder="몇 분?">
+                    <input id="exerTime" name="exerTime" type="number" min="0" max="300" step="1" class="form-control" placeholder="몇 분?">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">저장!</button>
                     </span>
@@ -87,7 +119,7 @@
 
                     <form action="./deleteExercise/" method="GET">
                         <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ exercise.nickname }}{{ exercise.exer_date }}{{ exercise.exer_title }}{{ exercise.exer_time }}</li>
+                            <li class="list-group-item">{{ exercise.nickname }}  {{ exercise.exer_date }}  {{ exercise.exer_title }}  {{ exercise.exer_time }}</li>
                             <input type="hidden" id="exerNum" name="exerNum" value="{{ exercise.id }}"></input>
                             <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">삭제</button>
@@ -100,24 +132,7 @@
             </div>
         </div>
 
-  <div class="exerDiv">
-                <ul class="list-group">
-                    {% for exercise in exercises %}
 
-                    <form action="" method="GET">
-                        <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ exercise.exer_date }}{{ exercise.exer_title }}{{ exercise.exer_time }}</li>
-                            <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
-                            <span class="input-group-addon">
-                                <button type="submit" class="custom-btn btn btn-danger">삭제</button>
-                            </span>
-                        </div>
-                    </form>
-
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
 
 </body>
 
@@ -127,7 +142,7 @@
             type: 'bar'
           },
           title: {
-            text: '🤸‍♀️운동장🤸‍♀️'
+            text: '🤸‍♀운동장🤸‍♀️'
           },
           subtitle: {
             text: '열정🔥🔥'
@@ -149,7 +164,7 @@
             }
           },
           tooltip: {
-            valueSuffix: ' millions'
+            valueSuffix: ' 분'
           },
           plotOptions: {
             bar: {
@@ -185,6 +200,9 @@
           }, {
             name: '희정',
             data: {{d}}
+          }, {
+            name: '진희',
+            data: {{e}}
           }]
         });
 

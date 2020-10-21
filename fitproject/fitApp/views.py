@@ -47,36 +47,41 @@ def bar(request):
 
 
 
-    sujin_time10 = Exercise.objects.filter(nickname='sujin', exer_date__month=10).aggregate(Sum('exer_time'))
+
+
+    sujin_time10 = Exercise.objects.filter(nickname='수진', exer_date__month=10).aggregate(Sum('exer_time'))
     sujin10 = sujin_time10['exer_time__sum']
-    print(sujin_time10)
+
 
     # sujin_time9 = Exercise.objects.filter(nickname='sujin', exer_date__month=9).aggregate(Sum('exer_time'))
     # sujin9 = sujin_time9['exer_time__sum']
     # print(sujin_time9)
 
-    nayoung_time10 = Exercise.objects.filter(nickname='nayoung', exer_date__month=10).aggregate(Sum('exer_time'))
+    nayoung_time10 = Exercise.objects.filter(nickname='나영', exer_date__month=10).aggregate(Sum('exer_time'))
     nayoung10 = nayoung_time10['exer_time__sum']
 
-    jihee_time10 = Exercise.objects.filter(nickname='jihee', exer_date__month=10).aggregate(Sum('exer_time'))
+    jihee_time10 = Exercise.objects.filter(nickname='지희', exer_date__month=10).aggregate(Sum('exer_time'))
     jihee10 = jihee_time10['exer_time__sum']
 
 
-    heejung_time10 = Exercise.objects.filter(nickname='heejung', exer_date__month=10).aggregate(Sum('exer_time'))
+    heejung_time10 = Exercise.objects.filter(nickname='희정', exer_date__month=10).aggregate(Sum('exer_time'))
     heejung10 = heejung_time10['exer_time__sum']
 
 
-    jinhee_time10 = Exercise.objects.filter(nickname='jinhee', exer_date__month=10).aggregate(Sum('exer_time'))
+    jinhee_time10 = Exercise.objects.filter(nickname='진희', exer_date__month=10).aggregate(Sum('exer_time'))
     jinhee10 = jinhee_time10['exer_time__sum']
+    print(jinhee_time10)
+
+
 
 
 
     a = [sujin10] # 수진 = [10월, 9월, 8월, 7월]
-    b = [10] # 나영
+    b = [nayoung10] # 나영
     c = [jihee10] # 지희
     d = [heejung10] # 희정
-    e = [10] # 진희
+    e = [jinhee10] # 진희
 
-    context = {'a' : a, 'b' : b, 'c' : c, 'd' : d, 'e' : e,'exercises': exercises}
+    context = {'a': a, 'b': b, 'c': c, 'd': d, 'e': e,'exercises': exercises}
 
     return render(request, 'chart_bar.html', context)

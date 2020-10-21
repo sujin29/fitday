@@ -59,15 +59,20 @@
             height: 75%;
         }
         .messageDiv{
-            margin-top: 20px;
-            margin-bottom: 50px;
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
         }
         .input-group{
-            width: 800px;
-            margin: 0 auto;
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
 
         }
         .exerDiv1{
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
 
         }
         .custom-btn{
@@ -85,7 +90,7 @@
         <div id="container"></div>
         <p class="highcharts-description">
         <center>여기는 개인전 🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀️🏃‍♀
-        <br> written by sujin </br>
+        <br> 🔥🔥 </br>
         </center>
         </p>
     </figure>
@@ -96,11 +101,11 @@
                 <div class="input-group">
                     <select id="nickname" name="nickname">
                         <option value="">누구</option>
-                        <option value="heejung">⭐희정⭐</option>
-                        <option value="nayoung">⭐나영⭐</option>
-                        <option value="jihee">⭐지희⭐</option>
-                        <option value="sujin">⭐수진⭐</option>
-                        <option value="jinhee">⭐진희⭐</option>
+                        <option value="희정">⭐희정⭐</option>
+                        <option value="나영">⭐나영⭐</option>
+                        <option value="지희">⭐지희⭐</option>
+                        <option value="수진">⭐수진⭐</option>
+                        <option value="진희">⭐진희⭐</option>
                     </select>
                     <input id="exerDate" name="exerDate" type="date" class="form-control" placeholder="언제 했나요?">
                     <input id="exerTitle" name="exerTitle" type="text" class="form-control" placeholder="무슨 운동을 했나요?">
@@ -113,13 +118,16 @@
             </form>
         </div>
 
+
           <div class="exerDiv1">
+
                 <ul class="list-group">
+
                     {% for exercise in exercises %}
 
                     <form action="./deleteExercise/" method="GET">
                         <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ exercise.nickname }}  {{ exercise.exer_date }}  {{ exercise.exer_title }}  {{ exercise.exer_time }}</li>
+                            <li class="list-group-item">{{ exercise.exer_date|date:"n월 j일 D" }} 🤸‍♀️{{ exercise.nickname }}🤸‍♀️{{ exercise.exer_title }}  {{ exercise.exer_time }}</li>
                             <input type="hidden" id="exerNum" name="exerNum" value="{{ exercise.id }}"></input>
                             <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">삭제</button>

@@ -85,3 +85,5 @@ def bar(request):
     context = {'a': a, 'b': b, 'c': c, 'd': d, 'e': e,'exercises': exercises}
 
     return render(request, 'chart_bar.html', context)
+
+

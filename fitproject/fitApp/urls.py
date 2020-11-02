@@ -7,5 +7,6 @@ urlpatterns = [
     path('doneTodo/', views.doneTodo, name='doneTodo'),
     path('createExercise/', views.createExercise, name='createExercise'),
     path('deleteExercise/', views.deleteExercise, name='deleteExercise'),
-    path('', views.bar, name='bar')
+    path('', views.bar, name='bar'),
+    path('ox/', views.ox, name='ox')
 ]

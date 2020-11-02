@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from django.conf.urls import(handler400, handler404, handler500)
+
+# handler400 = 'fitproject.views.bad_request_page'
+# handler404 = 'fitproject.views.page_not_found_page'
+# handler500 = 'fitproject.views.server_error_page'
 
 
 

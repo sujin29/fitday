@@ -5,6 +5,7 @@ from .models import *
 from django.db.models import Sum
 
 
+
 # Create your views here.
 def index(request):
     # return HttpResponse('시간 입력 페이지')
@@ -45,17 +46,8 @@ def bar(request):
     # sum_time = Exercise.objects.filter(exer_date__month=9).aggregate(Sum('exer_time'))
     # print(sum_time)
 
-
-
-
-
     sujin_time10 = Exercise.objects.filter(nickname='수진', exer_date__month=10).aggregate(Sum('exer_time'))
     sujin10 = sujin_time10['exer_time__sum']
-
-
-    # sujin_time9 = Exercise.objects.filter(nickname='sujin', exer_date__month=9).aggregate(Sum('exer_time'))
-    # sujin9 = sujin_time9['exer_time__sum']
-    # print(sujin_time9)
 
     nayoung_time10 = Exercise.objects.filter(nickname='나영', exer_date__month=10).aggregate(Sum('exer_time'))
     nayoung10 = nayoung_time10['exer_time__sum']
@@ -70,20 +62,41 @@ def bar(request):
 
     jinhee_time10 = Exercise.objects.filter(nickname='진희', exer_date__month=10).aggregate(Sum('exer_time'))
     jinhee10 = jinhee_time10['exer_time__sum']
-    print(jinhee_time10)
+
+
+# 11월
+    sujin_time11 = Exercise.objects.filter(nickname='수진', exer_date__month=11).aggregate(Sum('exer_time'))
+    sujin11 = sujin_time11['exer_time__sum']
+
+    nayoung_time11 = Exercise.objects.filter(nickname='나영', exer_date__month=11).aggregate(Sum('exer_time'))
+    nayoung11 = nayoung_time11['exer_time__sum']
+
+    jihee_time11 = Exercise.objects.filter(nickname='지희', exer_date__month=11).aggregate(Sum('exer_time'))
+    jihee11 = jihee_time11['exer_time__sum']
+
+
+    heejung_time11 = Exercise.objects.filter(nickname='희정', exer_date__month=11).aggregate(Sum('exer_time'))
+    heejung11 = heejung_time11['exer_time__sum']
+
+
+    jinhee_time11 = Exercise.objects.filter(nickname='진희', exer_date__month=11).aggregate(Sum('exer_time'))
+    jinhee11 = jinhee_time11['exer_time__sum']
+
+    print(type(jinhee11))
 
 
 
 
-
-    a = [sujin10] # 수진 = [10월, 9월, 8월, 7월]
-    b = [nayoung10] # 나영
-    c = [jihee10] # 지희
-    d = [heejung10] # 희정
-    e = [jinhee10] # 진희
+    a = [sujin11, sujin10] # 수진 = [11월, 10월, 9월, 8월, 7월]
+    b = [nayoung11, nayoung10] # 나영
+    c = [jihee11, jihee10] # 지희
+    d = [heejung11, heejung10] # 희정
+    e = [jinhee11, jinhee10] # 진희
 
     context = {'a': a, 'b': b, 'c': c, 'd': d, 'e': e,'exercises': exercises}
 
     return render(request, 'chart_bar.html', context)
 
-
+def ox(request):
+    # return HttpResponse('하이하이')
+    return render(request, 'ox.html')

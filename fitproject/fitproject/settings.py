@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's!5ld*89k0n@l8jelicvmlyz1br+iliof9*83#hfr78=#yg_or'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # 원래 True였는데 실서버로 옮기고 False로 바꿈
+DEBUG = True # 원래 True였는데 실서버로 옮기고 False로 바꿈
 
-ALLOWED_HOSTS = ['sujinzzang.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost',
+                 'sujinzzang.pythonanywhere.com']
 
 
 # Application definition

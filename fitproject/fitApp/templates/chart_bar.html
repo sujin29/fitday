@@ -131,7 +131,7 @@
 
                     <form action="./deleteExercise/" method="GET">
                         <div class="input-group" name='todo1'>
-                            <li class="list-group-item">{{ exercise.exer_date|date:"n월 j일 D" }} 🤸‍♀️{{ exercise.nickname }}🤸‍♀️{{ exercise.exer_title }}  {{ exercise.exer_time }}</li>
+                            <li class="list-group-item">{{ exercise.exer_date|date:"n월 j일 D" }} 🔥️{{ exercise.nickname }}🔥{{ exercise.exer_title }}  {{ exercise.exer_time }}</li>
                             <input type="hidden" id="exerNum" name="exerNum" value="{{ exercise.id }}"></input>
                             <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">삭제</button>
